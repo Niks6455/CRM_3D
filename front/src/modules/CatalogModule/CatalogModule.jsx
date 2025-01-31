@@ -1,6 +1,8 @@
+import styles from "./CatalogModule.module.scss";
+
 function CatalogModule() {
     return ( 
-        <section>
+        <section className={styles.CatalogModule}>
             CatalogModule
         </section>
      );

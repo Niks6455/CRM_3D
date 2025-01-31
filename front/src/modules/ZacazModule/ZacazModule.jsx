@@ -1,6 +1,8 @@
+import styles from "./ZacazModule.module.scss";
+
 function ZacazModule() {
     return ( 
-        <section>
+        <section className={styles.ZacazModule}>
             ZacazModule
         </section>
      );

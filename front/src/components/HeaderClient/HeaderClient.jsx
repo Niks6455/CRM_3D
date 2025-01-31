@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import styles from "./HeaderClient.module.scss";
 import DataContext from "../../context";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,13 @@ function HeaderClient() {
     console.log("userData", userData)
     const [activeProfilePop, setActiveProfilePop] = useState(false);
     const navigate = useNavigate();
+    const handleClickOutside = (e) => {
+        if (menuRef.current && !menuRef.current.contains(e.target) && activeProfilePop) {
+            setActiveProfilePop(false);
+        }
+    };
+    
+    const menuRef = useRef(null);
     const getRole = () =>{
         if(userData?.role === 2){
             return "Администратор"
@@ -16,6 +23,14 @@ function HeaderClient() {
             return "Клиент"
         }
     }
+
+    useEffect(()=>{
+        document.addEventListener("mousedown", handleClickOutside());
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside());
+        }
+    },[])
+
     return ( 
         <>
 
@@ -25,21 +40,21 @@ function HeaderClient() {
             </div>
             <ul>
                 <li className={context.activePage === "HomePage" ? styles.active : ""} onClick={() => context.setActivePage("HomePage")}>Главная страница</li>
-                <li className={context.activePage === "Catalog" ? styles.active : ""} onClick={() => context.setActivePage("Catalog")}>Каталог услуг</li>
+                <li className={context.activePage === "Catalog" ? styles.active : ""} onClick={() => context.setActivePage("Catalog")}>Каталог Товаров</li>
                 <li className={context.activePage === "MyZacaz" ? styles.active : ""} onClick={() => context.setActivePage("MyZacaz")}>Мои заказы</li>
             </ul>
             <div className={styles.HeaderClientContact}>
-                <img src="/img/profile.svg" onClick={() => setActiveProfilePop(!activeProfilePop)}/>   
+                <img src="/img/profile.svg" onClick={() => setActiveProfilePop(!activeProfilePop)} draggable="false"/>   
             </div>
             
         </header>
           {
             activeProfilePop &&
-            <div className={styles.profileData}>
+            <div className={styles.profileData} ref={menuRef}>
                 <p>{userData?.fio}</p>
                 <p>{userData?.email}</p>
                 <p>Роль: {getRole()}</p>
-                <button onClick={() => navigate("/")}>Выход</button>
+                <button onClick={(e) =>navigate("/")}>Выход</button>
             </div>
         }
         </>

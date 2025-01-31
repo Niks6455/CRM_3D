@@ -6,6 +6,7 @@ import HeaderClient from "../../components/HeaderClient/HeaderClient";
 import HomePageModule from "../../modules/HomePageModule/HomePageModule";
 import ZacazModule from "../../modules/ZacazModule/ZacazModule";
 import CatalogModule from "../../modules/CatalogModule/CatalogModule";
+import Footer from "../../components/Footer/Footer";
 
 function HomePage() {
     const context = useContext(DataContext);
@@ -19,20 +20,21 @@ function HomePage() {
                 <main className={styles.HomePage}>
                 {
                     context.activePage === "HomePage" ? 
+                    (
+                        <HomePageModule/>
+                    ) : 
+                    (context.activePage === "Catalog" ? 
                         (
-                           <HomePageModule/>
+                            <CatalogModule/>  
                         ) : 
-                        (context.activePage === "Catalog" ? 
-                            (
-                                <CatalogModule/>  
-                            ) : 
-                            (
-                                <ZacazModule/>                            
-                            )
+                        (
+                            <ZacazModule/>                            
                         )
+                    )
                 }
                 </main>
             {/* </Layout> */}
+            <Footer/>
      
         </>
      );

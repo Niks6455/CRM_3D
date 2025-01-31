@@ -6,6 +6,21 @@
         display: flex;
         justify-content: center;
         padding: 200px 0px 100px 0px;
+        position: relative;
+        .dImg1{
+            position: absolute;
+            top: 150px;
+            left: 200px;
+            width: 100px;
+            height: 100px;
+        }
+        .dImg2{
+            position: absolute;
+            top: 300px;
+            right: 200px;
+            width: 100px;
+            height: 100px;
+        }
         .heroImg{
             display: flex;
             justify-content: center;
@@ -64,5 +79,71 @@
         display: flex;
         justify-content : center;
         padding: 100px 0px;
+        background-color: #fff;
+        margin-top: 300px;
+
+/* Features Section */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 900px;
+}
+
+.feature {
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #f9f9f9;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    img{
+        width: 200px;
+        height: 225px;
+    }
+}
+
+.feature:hover {
+    scale: 1.02;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.featureTitle {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.featureText {
+    color: #555;
+    margin-top: 0.5rem;
+}
+
+    }
+    .servicesTitle{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 25px;
+    }
+    .featureBy{
+        display: flex;
+        margin-top: 50px;
+        justify-content: center;
+        button{
+            background-color: var(--GreenColorDefault);
+            color: #fff;
+            font-size: 24px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: 0.05s linear all;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            &:hover{
+                background-color: var(--GreenColorText);
+            }
+        }
     }
 }
