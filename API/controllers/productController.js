@@ -1,4 +1,3 @@
-import jwt from "../utils/jwt.js";
 import Product from "../models/product.js";
 
 export default {

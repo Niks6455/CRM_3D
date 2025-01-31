@@ -5,6 +5,8 @@ import UploadRoute from './routes/upload.js';
 import corsConfig from './utils/cors.js';
 import Product from './routes/product.js';
 import Order from './routes/order.js';
+import Favorite from './routes/favorites.js';
+import Reviews from './routes/reviews.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -19,7 +21,8 @@ app.use('/auth', AuthRoute);
 app.use('/upload', UploadRoute);
 app.use('/product', Product);
 app.use('/order', Order);
-
+app.use('/favorite', Favorite);
+app.use('/reviews', Reviews);
 
 
 // Синхронизация с базой данных
