@@ -8,8 +8,8 @@ export default {
     },
 
     createOrder: async (req, res) => {
-        const { name, count, description, idProduct } = req.body;
-        if(!name || !count || !description || !idProduct) {
+        const { count, description, idProduct } = req.body;
+        if(!count || !description || !idProduct) {
             return res.status(400).json({ message: 'All fields are required' });
         }else{
             const product = await Product.findByPk(idProduct);
@@ -18,10 +18,10 @@ export default {
             }
         }
         const userId = req.user.id;
-        console.log("userId", userId);
-        console.log("req.body", req.body);
-        // const order = await Order.create(req.body);
-        // res.json(order);
+        // console.log("userId", userId);
+        // console.log("req.body", req.body);
+        const order = await Order.create({ count, description, idProduct, idUser: userId });
+        res.json(order);
     },
 
     getOrder: async (req, res) => {

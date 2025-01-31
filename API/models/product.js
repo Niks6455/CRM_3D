@@ -1,4 +1,5 @@
-import { DataTypes, Model, TEXT } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
+
 export default class Product extends Model {
   static initialize(sequelize) {
     Product.init(
@@ -22,7 +23,6 @@ export default class Product extends Model {
         },
         image: {
           type: DataTypes.TEXT,
-          
           allowNull: true,
         },
       },
@@ -30,13 +30,10 @@ export default class Product extends Model {
         sequelize,
         schema: 'public',
         modelName: 'Product',
-        tableName: 'producs',
+        tableName: 'products',
         timestamps: true,
         paranoid: true,
       }
     );
   }
-
 }
-
-

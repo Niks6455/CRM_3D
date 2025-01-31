@@ -1,4 +1,5 @@
 import { DataTypes, Model } from 'sequelize';
+
 export default class Order extends Model {
   static initialize(sequelize) {
     Order.init(
@@ -7,14 +8,6 @@ export default class Order extends Model {
           type: DataTypes.INTEGER,
           primaryKey: true,
           autoIncrement: true,
-        },
-        name: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        count: {
-          type: DataTypes.INTEGER,
-          allowNull: false,
         },
         description: {
           type: DataTypes.STRING,
@@ -31,7 +24,4 @@ export default class Order extends Model {
       }
     );
   }
-
 }
-
-
