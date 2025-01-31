@@ -1,0 +1,27 @@
+@import "../../styles/colors.scss";
+
+.HomePage{
+    .Title{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        p{
+            font-size: 32px;
+            line-height: 38px;
+            font-weight: 900;
+            margin: 40px 0px 20px 0px;
+            color: var(--GreenColorDefault);
+        }
+    }
+    .Subtitle{
+        margin:25px 0px;
+        font-size: 28px;
+        color: var(--GreenColorDefault);
+        font-weight: 600;
+    }
+    .BookCase{
+        margin-top: 50px;
+        display: flex;
+        justify-content: start;
+    }  
+}

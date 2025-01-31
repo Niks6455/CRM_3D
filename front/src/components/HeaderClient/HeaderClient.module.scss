@@ -1,0 +1,75 @@
+@import "../../styles/colors.scss";
+
+.HeaderClient{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 100px;
+    align-items: center;
+    height: 100px;
+    background-color: var(--BodyBgColor);
+    // background-color: var(--GraySecond);
+    backdrop-filter: blur(10px);
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    
+    .HeaderClientLogo{
+        font-size: 32px;
+        line-height: 38px;
+        font-weight: 900;
+        color: var(--GreenColorDefault);
+    }
+    ul{
+        display: flex;
+        list-style: none;
+        li{
+            margin: 0px 20px;
+            transition: 0.1s linear all;
+            font-size: 22px;
+            &:hover{
+                cursor: pointer;
+                color: var(--GreenColorText);
+            }
+        }
+        li.active{
+            color: var(--GreenColorText);
+            text-decoration: underline;
+        }
+    }
+    .HeaderClientContact{
+       cursor: pointer;
+       transition: 0.1s linear all;
+       img{
+        transition: 0.1s linear all;
+        &:hover{
+            transform: scale(1.1);
+        }
+       }
+       position: relative;
+    }
+}
+.profileData{
+    padding: 10px;
+    position: absolute;
+    right: 100px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    button{
+        width: 100%;
+        height: 40px;
+        border-radius: 5px;
+        background-color: var(--GreenColorDefault);
+        margin-top: 10px;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        transition: 0.1s linear all;
+        font-size: 18px;
+        &:hover{
+            background-color: var(--GreenColorText);
+        }
+    }
+}

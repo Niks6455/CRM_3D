@@ -1,0 +1,31 @@
+import axios from "axios";
+const http = axios.create({
+  withCredentials: true,
+});
+const server = process.env.REACT_APP_API_URL;
+
+
+//! Запрос на авторизацию
+export const LoginFunc = async (UserData) => {
+  try {
+    const response = await http.post(`${server}/auth/login`, UserData);
+    const { token, ...userData } = response.data;
+    console.log("token", token)
+    console.log("response", response)
+    sessionStorage.setItem("accessToken", token);
+    sessionStorage.setItem("userData", JSON.stringify(userData));
+    return response;
+  } catch (error) {
+     console.log("Произошла ошибка при авторизации") 
+  }
+};
+
+//! регистрация аккаунта
+export const RegisterFunc = async (UserData) => {
+  try {
+    const response = await http.post(`${server}/auth/registration`, UserData);
+    return response;
+  } catch (error) {
+    console.log("Произошла ошибка при регистрации") 
+ }
+};

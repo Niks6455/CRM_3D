@@ -1,0 +1,35 @@
+@import "./../../styles/colors.scss";
+
+.Input{
+    display: flex;
+    position: relative;
+    input{
+        width: 490px;
+        height: 64px;
+        border-radius: 10px;
+        border: none;
+        border: 1px solid var(--InputColors);
+        background-color: inherit;
+        margin: 15px 0px;
+        font-size: 20px;
+        color: #000;
+        box-sizing: border-box;
+        padding-left: 25px;
+        &::placeholder{
+            color: var(--InputTextColor);
+        }
+        &:focus{
+            outline: none;
+        }
+    }
+    .placeholderClose{
+        color: #858B89;
+        font-size: 16px;
+        margin-top: 4px;
+        position: absolute;
+        left: 20px;
+        top: 0px;
+        padding: 0px 5px;
+        background-color: #F0F3F2;
+    }
+}

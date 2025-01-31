@@ -1,0 +1,68 @@
+
+.containerHomePage{ 
+    // 
+    .hero{
+        background-color: var(--BodyBgColor);
+        display: flex;
+        justify-content: center;
+        padding: 200px 0px 100px 0px;
+        .heroImg{
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+            img{
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                margin: 0 auto;
+            } 
+        }
+        h1{
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+        p{
+            text-align: center;
+            font-size: 24px;
+        }
+    }
+    .about{
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        background-color: #000;
+        padding-top: 150px;
+        color: #fff;
+        padding-bottom: 100px;
+        
+        .aboutText{
+            display: flex;
+            justify-content: space-between;
+        }
+        .aboutInner{
+            h1{
+                font-size: 28px;
+                text-align: center;
+            }
+            img{
+                margin: 0 auto;
+            } 
+            .aboutImg{
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+            p{
+               margin: 50px;
+               text-align: justify;
+               font-size: 20px;
+            }
+        }
+    }
+    .services{
+        display: flex;
+        justify-content : center;
+        padding: 100px 0px;
+    }
+}
