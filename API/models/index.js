@@ -1,10 +1,8 @@
 import { Sequelize } from 'sequelize';
 import 'dotenv/config.js';
 import User from './user.js';
-import Book from './book.js';
-import BookCase from './bookCase.js';
-import BookShelf from './bookShelf.js';
-
+import Product from './product.js';
+import Order from './order.js';
 const { DB_USER, DB_PWD, DB_HOST, DB_PORT, DB_NAME } = process.env;
 
 // Создание экземпляра Sequelize
@@ -21,29 +19,20 @@ export const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PWD, {
 
 // // Инициализация моделей
 User.initialize(sequelize);
-BookCase.initialize(sequelize);
-BookShelf.initialize(sequelize);
-Book.initialize(sequelize);
+Product.initialize(sequelize);
+Order.initialize(sequelize);
+// Добавление связей 
 
-// // Связывание моделей
+User.hasMany(Order, { foreignKey: 'idUser' });
+Order.belongsTo(User, { foreignKey: 'idUser' });
 
-User.hasMany(BookCase);
-BookCase.belongsTo(User, { foreignKey: 'userId' });
-
-BookCase.hasMany(BookShelf);
-BookShelf.belongsTo(BookCase, { foreignKey: 'bookCaseId' });
-
-BookShelf.hasMany(Book);
-Book.belongsTo(BookShelf, { foreignKey: 'bookShelfId' });
+Order.hasOne(Product, { foreignKey: 'idProduct' });
 
 // Экспорт модели и sequelize instance
 export const db = {
 	sequelize,
 	Sequelize,
 	User,
-	BookCase,
-	BookShelf,
-	Book,
 };
 
 export default db;

@@ -1,7 +1,7 @@
-import { DataTypes, Model } from 'sequelize';
-export default class Book extends Model {
+import { DataTypes, Model, TEXT } from 'sequelize';
+export default class Product extends Model {
   static initialize(sequelize) {
-    Book.init(
+    Product.init(
       {
         id: {
           type: DataTypes.INTEGER,
@@ -12,28 +12,25 @@ export default class Book extends Model {
           type: DataTypes.STRING,
           allowNull: false,
         },
-        countPage: {
+        price: {
           type: DataTypes.INTEGER,
           allowNull: false,
         },
-        author: {
+        description: {
           type: DataTypes.STRING,
           allowNull: false,
-        },  
-        bookShelfId: {
-          type: DataTypes.INTEGER,
-          allowNull: false,
-          references: {
-            model: 'BookShelf',
-            key: 'id',
-          },
+        },
+        image: {
+          type: DataTypes.TEXT,
+          
+          allowNull: true,
         },
       },
       {
         sequelize,
         schema: 'public',
-        modelName: 'Book',
-        tableName: 'books',
+        modelName: 'Product',
+        tableName: 'producs',
         timestamps: true,
         paranoid: true,
       }

@@ -1,8 +1,7 @@
-import { DataTypes, Model } from "sequelize";
-
-export default class BookCase extends Model {
+import { DataTypes, Model } from 'sequelize';
+export default class Order extends Model {
   static initialize(sequelize) {
-    BookCase.init(
+    Order.init(
       {
         id: {
           type: DataTypes.INTEGER,
@@ -11,29 +10,28 @@ export default class BookCase extends Model {
         },
         name: {
           type: DataTypes.STRING,
-          allowNull: true,
+          allowNull: false,
         },
-        countShelf: {
-          type: DataTypes.STRING, 
-          allowNull: true,
-        },
-        userId: {
+        count: {
           type: DataTypes.INTEGER,
           allowNull: false,
-          references: {
-            model: 'User',
-            key: 'id',
-          },
+        },
+        description: {
+          type: DataTypes.STRING,
+          allowNull: false,
         },
       },
       {
         sequelize,
         schema: 'public',
-        modelName: 'BookCase',
-        tableName: 'bookCases',
+        modelName: 'Order',
+        tableName: 'orders',
         timestamps: true,
         paranoid: true,
       }
     );
   }
+
 }
+
+
