@@ -7,6 +7,7 @@ import HomePageModule from "../../modules/HomePageModule/HomePageModule";
 import ZacazModule from "../../modules/ZacazModule/ZacazModule";
 import CatalogModule from "../../modules/CatalogModule/CatalogModule";
 import Footer from "../../components/Footer/Footer";
+import { Outlet } from "react-router-dom";
 
 function HomePage() {
     const context = useContext(DataContext);
@@ -18,20 +19,7 @@ function HomePage() {
         <HeaderClient/> 
             {/* <Layout> */}
                 <main className={styles.HomePage}>
-                {
-                    context.activePage === "HomePage" ? 
-                    (
-                        <HomePageModule/>
-                    ) : 
-                    (context.activePage === "Catalog" ? 
-                        (
-                            <CatalogModule/>  
-                        ) : 
-                        (
-                            <ZacazModule/>                            
-                        )
-                    )
-                }
+                    <Outlet/>
                 </main>
             {/* </Layout> */}
             <Footer/>

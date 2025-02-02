@@ -1,7 +1,150 @@
-.CatalogModule{
-    background-color: #fff;
+@import "../../styles/colors.scss";
+
+.CatalogModule {
+    background-color: #f8f9fa;
     min-height: calc(100vh - 300px);
     display: flex;
     justify-content: center;
     padding-top: 50px;
+    .catalogItemContainer {
+        display: flex;
+        justify-content: start;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 50px;
+    }
+
+    .catalogItem {
+        width: 315px;
+        height: 485px;
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+
+        img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .itemContent {
+            padding: 15px;
+            text-align: center;
+
+            h2 {
+                font-size: 18px;
+                color: #333;
+                margin-bottom: 10px;
+            }
+
+            .price {
+                font-size: 16px;
+                font-weight: bold;
+                color: var(--GreenColorText);
+            }
+
+            .description {
+                font-size: 14px;
+                color: #666;
+                margin-bottom: 15px;
+                height: 40px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+           
+        }
+    }
+    .catalogItemContainerPodr{
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-color: #3333335e;
+        backdrop-filter: blur(10px);
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .catalogItemInner{
+            width: 1000px;
+            height: 650px;
+            background-color: #fff;
+            border-radius: 10px;
+            margin-top: 100px;
+            position: relative;
+            .catalogItemInnerBlockOne{
+                display: flex;
+                margin-bottom: 50px;
+            }
+            .catalogItemInnerBlockTwo{
+                padding: 0px 50px;
+            }
+        }
+        img{
+            width: 500px;
+            height: 300px;
+            box-sizing: border-box;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        .close{
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: inherit;
+            border: none;
+            font-size: 32px;
+            cursor: pointer;
+            &:hover{
+                color: var(--GreenColorDefault);
+            }
+        }
+    }
+    .addToCart {
+        margin-top: 10px;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: var(--GreenColorDefault);
+            color: white;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+
+            &:hover {
+                background: var(--GreenColorText);
+            }
+        }
+        .quantityCont{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            button{
+                width: 24px;
+                height: 22px;
+                margin: 0px 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: inherit;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+                transition: 0.1s linear all;
+                background-color: var(--GreenColorDefault);
+                border-radius: 5px;
+                color: #fff;
+                &:hover{
+                    scale: 1.1;
+                }
+            }
+        }
 }

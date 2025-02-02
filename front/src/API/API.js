@@ -29,3 +29,25 @@ export const RegisterFunc = async (UserData) => {
     console.log("Произошла ошибка при регистрации") 
  }
 };
+
+//! Получение списка продуктов 
+export const GetAllProduct = async () => {
+  try {
+    const response = await http.get(`${server}/product`);
+    return response;
+  } catch (error) {
+    console.log("Произошла ошибка при регистрации") 
+ }
+};
+
+//! Получение всех комментариев
+export const GetAllReviews = async () => {
+  try {
+    const response = await http.get(`${server}/reviews`);
+    return response;
+  } catch (error) {
+    console.log("Произошла ошибка при регистрации") 
+ }
+};
+
+

@@ -7,8 +7,8 @@ import User from '../models/user.js';
 export default {
     async createOrder(req, res){
         try {
-          const { userId, description, products } = req.body;
-      
+          const { description, products } = req.body;
+          const userId = req.user.id;
           if (!userId || !products || products.length === 0) {
             return res.status(400).json({ message: 'User ID and products are required' });
           }

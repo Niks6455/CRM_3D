@@ -5,10 +5,9 @@ import verify from '../middlewares/checkToken.js';
 
 
 const router = Router();
-router.use(asyncRoute(verify.general));
 
 
-router.route('/').post(asyncRoute(reviewCtrl.createReview));
+router.route('/').post(asyncRoute(verify.general), reviewCtrl.createReview);
 router.route('/').get(asyncRoute(reviewCtrl.getReviews));
 router.route('/:id').get(asyncRoute(reviewCtrl.getReview));
 

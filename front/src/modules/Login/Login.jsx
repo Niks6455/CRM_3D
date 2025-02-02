@@ -28,7 +28,7 @@ function Login() {
             }
             LoginFunc(formData).then((res) => {
                 if (res?.status === 200) {
-                    navigate("/HomePage");
+                    navigate("/HomePage/Home");
                 }else{
                     setErrorText("Неверный логин или пароль");
                 }

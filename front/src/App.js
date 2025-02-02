@@ -5,6 +5,10 @@ import DataContext from "./context";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import "./styles/app.css";
 import { GetAllBookCase } from "./API/API";
+import CatalogModule from "./modules/CatalogModule/CatalogModule";
+import ZacazModule from "./modules/ZacazModule/ZacazModule";
+import HomePageModule from "./modules/HomePageModule/HomePageModule";
+import HistoryModule from "./modules/HistoryModule/HistoryModule";
 function App() {
 
   const [authPage, setAuthPage] = useState('Auth');
@@ -28,7 +32,12 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<AuthPage />}></Route>
-          <Route path="/HomePage" element={<HomePage />}></Route>
+          <Route path="/HomePage/*" element={<HomePage />}>
+            <Route path="Home" element={<HomePageModule />} />
+            <Route path="Catalog" element={<CatalogModule />} />
+            <Route path="Basket" element={<ZacazModule />}  />
+            <Route path="History" element={<HistoryModule />} />
+          </Route>
         </Routes>
       </main>
     </BrowserRouter>

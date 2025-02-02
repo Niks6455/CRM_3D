@@ -2,9 +2,12 @@ import { useContext } from "react";
 import Layout from "../../ui/Layout/Layout";
 import styles from "./HomePageModule.module.scss";
 import DataContext from "../../context";
+import ReviewsSlider from "../../components/ReviewsSlider/ReviewsSlider";
+import { useNavigate } from "react-router-dom";
 
 function HomePageModule() {
     const context = useContext(DataContext);
+    const navigate = useNavigate();
     return ( 
         <section className={styles.containerHomePage}>
            
@@ -50,26 +53,27 @@ function HomePageModule() {
                     {/* Features Section */}
                     <div className={styles.features}>
                         <div className={styles.feature}>
-                            <img src="/img/img1.jpg"/>
+                            <div className={styles.featureColor1}></div>
                             <h2 className={styles.featureTitle}>Загрузка моделей</h2>
                             <p className={styles.featureText}>Загружайте свои 3D-модели в форматах STL, OBJ и других.</p>
                         </div>
                         <div className={styles.feature}>
-                            <img src="/img/img2.jpg"/>
+                            <div className={styles.featureColor2}></div>
                             <h2 className={styles.featureTitle}>Выбор материалов</h2>
                             <p className={styles.featureText}>Подбирайте подходящий материал и цвет для вашего изделия.</p>
                         </div>
                         <div className={styles.feature}>
-                            <img src="/img/img3.jpg"/>
+                            <div className={styles.featureColor3}></div>
                             <h2 className={styles.featureTitle}>Быстрая доставка</h2>
                             <p className={styles.featureText}>Получите готовый заказ в кратчайшие сроки.</p>
                         </div>
                     </div>
                     <div className={styles.featureBy}>
-                        <button onClick={() => context.setActivePage("Catalog")}>Каталог Товаров</button>
+                        <button onClick={() => navigate("/HomePage/Catalog")}>Каталог Товаров</button>
                     </div>
                 </Layout>
             </div>
+             <ReviewsSlider/>
            
 
             
