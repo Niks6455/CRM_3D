@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   description: "", // Описание заказа
   products: [], // Массив товаров в корзине
+  phoneNumber: "",
 };
 
 const basketSlice = createSlice({
@@ -12,6 +13,10 @@ const basketSlice = createSlice({
     // Установить описание заказа
     setDescription(state, action) {
       state.description = action.payload;
+    },
+
+    setPhoneNumber(state, action) {
+      state.phoneNumber = action.payload;
     },
 
     // Добавить товар в корзину
@@ -55,6 +60,7 @@ export const {
   updateProductQuantity,
   removeProduct,
   clearBasket,
+  setPhoneNumber
 } = basketSlice.actions;
 
 export default basketSlice.reducer;

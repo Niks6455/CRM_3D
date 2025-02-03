@@ -1,5 +1,113 @@
-.HistoryModule{
+
+.HistoryModule {
     min-height: calc(100vh - 285px);
     padding-top: 35px;
     background-color: #fff;
+    padding-bottom: 100px;
+}
+
+h2, h3 {
+    text-align: center;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.searchInput:focus {
+    border-color: #007bff;
+}
+
+.tablesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+
+th {
+    background: #f4f4f4;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+tr:hover {
+    background: #f1f1f1;
+}
+
+td ul {
+    padding: 0;
+    list-style: none;
+}
+
+td {
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Стили для статусов */
+.pending {
+    background: #ffedcc;
+    color: #d68910;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.inProgress {
+    background: #d4edda;
+    color: #28a745;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.completed {
+    background: #cce5ff;
+    color: #007bff;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.canceled {
+    background: #f8d7da;
+    color: #dc3545;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+    .tablesContainer {
+        flex-direction: column;
+    }
+
+    .table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
 }

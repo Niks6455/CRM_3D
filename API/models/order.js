@@ -13,6 +13,15 @@ export default class Order extends Model {
           type: DataTypes.STRING,
           allowNull: false,
         },
+        phoneNumber: {
+          type: DataTypes.STRING,
+          allowNull: true,
+        },
+        status: {
+          type: DataTypes.ENUM('pending', 'processing', 'completed', 'canceled'),
+          allowNull: false,
+          defaultValue: 'pending', // Новый заказ всегда в статусе "pending"
+        },
       },
       {
         sequelize,

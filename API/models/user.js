@@ -21,6 +21,11 @@ export default class User extends Model {
           type: DataTypes.STRING,
            allowNull: true
         },
+        role: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          defaultValue: 1
+        }
       },
       {
         sequelize,

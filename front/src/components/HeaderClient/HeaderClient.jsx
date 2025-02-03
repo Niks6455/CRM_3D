@@ -33,12 +33,23 @@ function HeaderClient() {
         <>
             <header className={styles.HeaderClient}>
                 <div className={styles.HeaderClientLogo}>ISMA CRM</div>
-                <ul>
-                    <li className={window.location.pathname === "/HomePage/Home" ? styles.active : ""} onClick={() => navigate("/HomePage/Home")}>Главная страница</li>
-                    <li className={window.location.pathname === "/HomePage/Catalog" ? styles.active : ""} onClick={() => navigate("/HomePage/Catalog")}>Каталог Товаров</li>
-                    <li className={window.location.pathname === "/HomePage/Basket" ? styles.active : ""} onClick={() => navigate("/HomePage/Basket")}>Корзина</li>
-                    <li className={window.location.pathname === "/HomePage/History" ? styles.active : ""} onClick={() => navigate("/HomePage/History")}>Мои заказы</li>
-                </ul>
+                    
+                    {userData?.role === 2 ?
+                            (   <ul>
+                                    <li className={window.location.pathname === "/HomePage/Catalog" ? styles.active : ""} onClick={() => navigate("/HomePage/Catalog")}>Продукция</li>
+                                    <li className={window.location.pathname === "/HomePage/History" ? styles.active : ""} onClick={() => navigate("/HomePage/History")}>Заказы</li>
+                                    <li className={window.location.pathname === "/HomePage/Users" ? styles.active : ""} onClick={() => navigate("/HomePage/Users")}>Пользователи</li>
+                                </ul>
+                            ): (
+                                <ul>
+                                    <li className={window.location.pathname === "/HomePage/Home" ? styles.active : ""} onClick={() => navigate("/HomePage/Home")}>Главная страница</li>
+                                    <li className={window.location.pathname === "/HomePage/Catalog" ? styles.active : ""} onClick={() => navigate("/HomePage/Catalog")}>Каталог Товаров</li>
+                                    <li className={window.location.pathname === "/HomePage/Basket" ? styles.active : ""} onClick={() => navigate("/HomePage/Basket")}>Корзина</li>
+                                    <li className={window.location.pathname === "/HomePage/History" ? styles.active : ""} onClick={() => navigate("/HomePage/History")}>Мои заказы</li>
+                                </ul>
+                            )
+                    
+                    }
                 <div className={styles.HeaderClientContact}>
                     <img src="/img/profile.svg" onClick={() => setActiveProfilePop(!activeProfilePop)} draggable="false" />   
                 </div>

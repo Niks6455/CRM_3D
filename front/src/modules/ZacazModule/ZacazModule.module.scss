@@ -31,6 +31,17 @@
                 border-radius: 10px;
                 box-sizing: border-box;
                 margin: 25px 0px;
+                border: 1px solid var(--InputColors);
+            }
+            .phone{
+                width: 500px;
+                height: 50px;
+                border-radius: 10px;
+                border: 1px solid var(--InputColors);
+                padding: 10px;
+                font-size: 18px;
+                box-sizing: border-box;
+                margin-bottom: 25px;
             }
             button{
                 background-color: var(--GreenColorDefault);
@@ -133,4 +144,28 @@
         font-weight: bold;
         color: #777;
     }
+    .phone {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+    }
+    
+    .phoneError {
+        border: 1px solid red;
+        background: #ffefef;
+    }
+    
+    .errorText {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+    
+    .order:disabled {
+        background: gray;
+        cursor: not-allowed;
+    }
+    
 }

@@ -30,10 +30,37 @@ export const RegisterFunc = async (UserData) => {
  }
 };
 
+//! регистрация аккаунта
+export const GetAllUsers = async () => {
+  try {
+    const response = await http.get(`${server}/auth/getUsers`);
+    return response;
+  } catch (error) {
+    console.log("Произошла ошибка при регистрации") 
+ }
+};
+
+//! регистрация аккаунта
+export const SwitchRoleUser = async (data) => {
+  try {
+    const response = await http.post(`${server}/auth/svitchRole`, data);
+    return response;
+  } catch (error) {
+    console.log("Произошла ошибка при регистрации") 
+ }
+};
+
+
+
+
 //! Получение списка продуктов 
 export const GetAllProduct = async () => {
   try {
-    const response = await http.get(`${server}/product`);
+    const response = await http.get(`${server}/product`,{
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+      }
+    });
     return response;
   } catch (error) {
     console.log("Произошла ошибка при регистрации") 
@@ -43,7 +70,11 @@ export const GetAllProduct = async () => {
 //! Получение всех комментариев
 export const GetAllReviews = async () => {
   try {
-    const response = await http.get(`${server}/reviews`);
+    const response = await http.get(`${server}/reviews`,{
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+      }
+    });
     return response;
   } catch (error) {
     console.log("Произошла ошибка при регистрации") 
@@ -53,7 +84,11 @@ export const GetAllReviews = async () => {
 //! Получение всех заказов
 export const GetAllOrders = async () => {
   try {
-    const response = await http.get(`${server}/order`);
+    const response = await http.get(`${server}/order`,{
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+      }
+    });
     return response;
   } catch (error) {
     console.log("Произошла ошибка при регистрации") 
@@ -61,9 +96,13 @@ export const GetAllOrders = async () => {
 };
 
 //! Получение всех заказов Пользователя
-export const GetOrders = async (id) => {
+export const GetOrder = async (id) => {
   try {
-    const response = await http.get(`${server}/order/${id}`);
+    const response = await http.get(`${server}/order/${id}`,{
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+      }
+    });
     return response;
   } catch (error) {
     console.log("Произошла ошибка при регистрации") 
@@ -73,12 +112,62 @@ export const GetOrders = async (id) => {
 //! создание заказа
 export const CreateOrder = async (data) => {
   try {
-    const response = await http.post(`${server}/order`, data);
+    const response = await http.post(`${server}/order`, data,{
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+      }
+    });
     return response;
   } catch (error) {
     console.log("Произошла ошибка при регистрации") 
  }
 };
+
+//! создание заказа
+export const CreateRewiew = async (data) => {
+  try {
+    const response = await http.post(`${server}/reviews`, data,{
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+      }
+    });
+    return response;
+  } catch (error) {
+    console.log("Произошла ошибка при регистрации") 
+ }
+};
+
+//! Обновление статуса заказа
+export const UpdateOrderStatus = async (data) => {
+  try {
+    const response = await http.post(`${server}/order/update`, data,{
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+      }
+    });
+    return response;
+  } catch (error) {
+    console.log("Произошла ошибка при регистрации") 
+ }
+};
+
+export const ProdCreate = async (data) => {
+  try {
+    const response = await http.post(`${server}/product`, data,{
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+      }
+    });
+    return response;
+  } catch (error) {
+    console.log("Произошла ошибка при регистрации") 
+ }
+};
+
+
+
+
+
 
 
 

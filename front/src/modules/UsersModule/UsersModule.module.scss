@@ -1,0 +1,122 @@
+.UsersModule {
+    min-height: calc(100vh - 285px);
+    padding-top: 35px;
+    background-color: #fff;
+    padding-bottom: 100px;
+
+h2 {
+    text-align: center;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background: #f4f4f4;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+tr:hover {
+    background: #f1f1f1;
+}
+
+td ul {
+    padding: 0;
+    list-style: none;
+}
+
+td {
+    text-align: center;
+}
+
+/* Стили для селекта (выбора роли) */
+.roleSelect {
+    width: 150px;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.roleSelect:focus {
+    border-color: #007bff;
+}
+
+.roleSelect option {
+    padding: 8px;
+}
+
+/* Стили для кнопки изменения роли */
+.changeRole {
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.changeRole:hover {
+    color: #0056b3;
+}
+
+/* Стили для предупреждения о смене своей роли */
+.alert {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 10px;
+}
+.searchInput {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.searchInput:focus {
+    border-color: #007bff;
+}
+
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+    .table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    .roleSelect {
+        width: 120px;
+    }
+
+    .changeRole {
+        font-size: 12px;
+    }
+}
+
+}

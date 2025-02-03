@@ -11,5 +11,5 @@ router.use(asyncRoute(verify.general));
 router.route('/').post(asyncRoute(orderCtrl.createOrder));
 router.route('/').get(asyncRoute(orderCtrl.getOrders));
 router.route('/:id').get(asyncRoute(orderCtrl.getOrderById));
-
+router.route('/update').post(asyncRoute(orderCtrl.updateOrderStatus));
 export default router;

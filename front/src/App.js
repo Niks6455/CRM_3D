@@ -9,6 +9,7 @@ import CatalogModule from "./modules/CatalogModule/CatalogModule";
 import ZacazModule from "./modules/ZacazModule/ZacazModule";
 import HomePageModule from "./modules/HomePageModule/HomePageModule";
 import HistoryModule from "./modules/HistoryModule/HistoryModule";
+import UsersModule from "./modules/UsersModule/UsersModule";
 function App() {
 
   const [authPage, setAuthPage] = useState('Auth');
@@ -37,6 +38,7 @@ function App() {
             <Route path="Catalog" element={<CatalogModule />} />
             <Route path="Basket" element={<ZacazModule />}  />
             <Route path="History" element={<HistoryModule />} />
+            <Route path="Users" element={<UsersModule />} />
           </Route>
         </Routes>
       </main>
