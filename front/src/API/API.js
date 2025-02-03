@@ -50,4 +50,39 @@ export const GetAllReviews = async () => {
  }
 };
 
+//! Получение всех заказов
+export const GetAllOrders = async () => {
+  try {
+    const response = await http.get(`${server}/order`);
+    return response;
+  } catch (error) {
+    console.log("Произошла ошибка при регистрации") 
+ }
+};
+
+//! Получение всех заказов Пользователя
+export const GetOrders = async (id) => {
+  try {
+    const response = await http.get(`${server}/order/${id}`);
+    return response;
+  } catch (error) {
+    console.log("Произошла ошибка при регистрации") 
+ }
+};
+
+//! создание заказа
+export const CreateOrder = async (data) => {
+  try {
+    const response = await http.post(`${server}/order`, data);
+    return response;
+  } catch (error) {
+    console.log("Произошла ошибка при регистрации") 
+ }
+};
+
+
+
+
+
+
 

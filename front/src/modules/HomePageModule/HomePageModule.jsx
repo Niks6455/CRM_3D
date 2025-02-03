@@ -30,7 +30,7 @@ function HomePageModule() {
                     <div className={styles.aboutInner}>
                         <h1>О компании ISMA CRM</h1>
                         <div className={styles.aboutImg}>
-                            <img src="./img/InfoBlock.jpeg"/>
+                            <img src="/img/InfoBlock.jpeg"/>
                         </div>
                             <div className={styles.aboutText}>
                                 <div>
