@@ -7,7 +7,6 @@ import { use } from "react";
 function HeaderClient() {
     const context = useContext(DataContext);
     const userData = JSON.parse(sessionStorage.getItem("userData")).user;
-    console.log("userData", userData);
     const [activeProfilePop, setActiveProfilePop] = useState(false);
     const navigate = useNavigate();
     const menuRef = useRef(null);

@@ -33,8 +33,6 @@ const uploader = multer({
 export default {
     uploader,
     async  uploadFile({body: {id}, file}, res) {
-        console.log(file);
-        console.log(id);
         if (!file) return 'file is undefined';
         if(!id) return 'id is undefined';
         const filepath = file.size > 1024 * 1024 * 1.5 
