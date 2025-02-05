@@ -28,12 +28,16 @@ function Login() {
             }
             LoginFunc(formData).then((res) => {
                 if (res?.status === 200) {
-                    navigate("/HomePage/Home");
+                    if(res?.data?.user?.role == 2){
+                        navigate("/HomePage/History")
+                    }else{
+                        navigate("/HomePage/Home")
+                    }
+                   
                 }else{
                     setErrorText("Неверный логин или пароль");
                 }
             })
-            // navigate("/HomePage");
     };
 
     return (

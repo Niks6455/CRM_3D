@@ -30,6 +30,7 @@ function ReviewsSlider() {
 
   if (!sliderData.length) return <p>Загрузка отзывов...</p>;
 
+  console.log(sliderData)
   return (
     <section className={styles.sliderContainer}>
     <div className={styles.sliderContainerInner}>

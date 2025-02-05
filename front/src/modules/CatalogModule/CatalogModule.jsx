@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./CatalogModule.module.scss";
-import { GetAllProduct, ProdCreate } from "../../API/API";
+import { DeleteProduct, GetAllProduct, GetProductOne, ProdCreate, UpdatePhoto, UpdateProduct } from "../../API/API";
 import Layout from "../../ui/Layout/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct, removeProduct, updateProductQuantity } from "../../store/Basket/basket";
@@ -12,12 +12,14 @@ function CatalogModule() {
     const userData = JSON.parse(sessionStorage.getItem("userData"))?.user;
     const isAdmin = userData?.role === 2;  // Проверка, является ли пользователь администратором
     const [createProduct, setCreateProduct] = useState(false);
+    const fileInputRef = useRef(null);
     const [formData, setFormData] = useState({
         name: "",
         description: "",
         price: 0
     })
-
+    const [editForm, setEditForm] = useState(false)
+    const [editId, setEditId] = useState(null)
     useEffect(() => {
         getProduct()
     }, []);
@@ -51,7 +53,6 @@ function CatalogModule() {
     };
 
     const CreateProductData = (data) =>{
-        console.log("data", data)
         if(
             data.name === "" &&
             data.description === "" &&
@@ -74,6 +75,77 @@ function CatalogModule() {
         }
         
     }
+
+    const selectEditProduct = (item) => {
+        setFormData({
+            name: item.name,
+            description: item.description,
+            price: item.price
+        });
+        setEditId(item);
+        setEditForm(!editForm);
+    }
+
+    const SaveData = (data) =>{
+        if(
+            data.name === "" &&
+            data.description === "" &&
+            data.price === 0
+        ){
+            alert("Заполните все поля!");
+            return;
+        }else{
+            UpdateProduct(data, editId.id).then(res => {
+                if (res?.status === 200) {
+                    setEditForm(false);
+                    setFormData({
+                        name: "",
+                        description: "",
+                        price: 0
+                    })
+                    getProduct();
+                }
+            });
+        }
+    }
+
+    const AddPhoto = () =>{
+        fileInputRef.current.click();
+    }
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('id', editId.id);
+        UpdatePhoto(formData).then(res => {
+            if (res?.status === 200) {
+                getProduct();
+                GetProductOne(editId.id).then(res => {
+                    if (res?.status === 200) {
+                        setFormData({
+                            name: res?.data.name,
+                            description: res?.data.description,
+                            price: res?.data.price
+                        })
+                        setEditId(res?.data);
+                    }
+                })
+            }
+        })
+      };
+      const deleteProductItem = (id) => {
+        if (window.confirm("Вы действительно хотите удалить продукт?")) {
+            DeleteProduct(id).then(res => {
+                if (res?.status === 200) {
+                    getProduct();
+                }
+            }).catch(error => {
+                console.error("Ошибка удаления:", error);
+            });
+        }
+    };
+    
 
     return (
         <section className={styles.CatalogModule}>
@@ -119,6 +191,12 @@ function CatalogModule() {
                                 !isAdmin &&   <button className={styles.addToCart} onClick={() => setSelectPodr(item)}>Подробнее</button>   
                             }
                         </div>
+                        {
+                            isAdmin && <button className={styles.editItem} onClick={() =>{selectEditProduct(item)}}><img src="/img/pencil.png" alt="pencil"/></button>
+                        }
+                        {
+                            isAdmin && <button className={styles.editItem + " " + styles.trash} onClick={() =>{deleteProductItem(item.id)}}><img src="/img/trash.png" alt="pencil"/></button>
+                        }
                         </div>
                     );
                     })}
@@ -147,7 +225,7 @@ function CatalogModule() {
                                         </>
                                 
                                     ) : (
-                                    <button className={styles.addToCart} onClick={() => handleAddOrUpdateProduct(selectPodr)}>Добавить в корзину</button>
+                                    <button className={styles.addToCartPodr} onClick={() => handleAddOrUpdateProduct(selectPodr)}>Добавить в корзину</button>
                                     )}
                                     <button className={styles.close} onClick={() => setSelectPodr(null)}>&times;</button>
                                 </div>
@@ -175,7 +253,35 @@ function CatalogModule() {
                                 <input type="number" placeholder="Стоимость товара" value={formData.price} onChange={(e) => setFormData({ ...formData, price: e.target.value })} />
                                 <button onClick={() => CreateProductData(formData)}>Добавить модель</button>
                             </div>
-                            <button className={styles.close} onClick={() => setCreateProduct(!createProduct)}>&times;</button>
+                            <button className={styles.close} onClick={() => {setCreateProduct(!createProduct); setFormData({ name: "", description: "", price: "" })}}>&times;</button>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+            {
+                editForm && (
+                    <div className={styles.catalogItemContainerPodr}>
+                        <div className={styles.catalogItemContainerPodrAdmin}>
+                            <div className={styles.catalogItemInnerEdit}>
+                            <h1> Редактирование модели  </h1>
+                            <div className={styles.catalogItemInnerEditBlock}>
+                                <div className={styles.catalogItemInnerEditBlockFirst}>
+                                    <img src={editId?.image ? `data:image/png;base64,${editId?.image}` :  "/img/NoPhoto.png"} alt={editId?.name} />
+                                    <button className={styles.addPhotoImg} onClick={() => AddPhoto()}>Изменить фото</button>
+                                    <input type="file" ref={fileInputRef} onChange={handleFileChange} accept=".png .jpeg .jpg" />
+                                </div>
+                                <div className={styles.catalogItemInnerEditBlockTwo}>
+                                    <div className={styles.addModel}>
+                                        <input type="text" placeholder="Название товара" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
+                                        <textarea maxLength={100} type="text" placeholder="Описание товара" value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} />
+                                        <input type="number" placeholder="Стоимость товара" value={formData.price} onChange={(e) => setFormData({ ...formData, price: e.target.value })} />
+                                        <button onClick={() => SaveData(formData)}>Сохранить информацию</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button className={styles.close} onClick={() => {setEditForm(!editForm); setFormData({ name: "", description: "", price: "" })}}>&times;</button>
                             </div>
                         </div>
                     </div>

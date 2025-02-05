@@ -164,6 +164,64 @@ export const ProdCreate = async (data) => {
  }
 };
 
+export const UpdateProduct = async (data, id) => {
+  try {
+    const response = await http.post(`${server}/product/${id}`, data,{
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+      }
+    });
+    return response;
+  } catch (error) {
+    console.log("Произошла ошибка при регистрации") 
+ }
+};
+
+export const UpdatePhoto = async (data) => {
+  try {
+    const response = await http.post(`${server}/upload`, data,{
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+      }
+    });
+    return response;
+  } catch (error) {
+    console.log("Произошла ошибка при регистрации") 
+ }
+};
+
+export const GetProductOne = async (id) => {
+  try {
+    const response = await http.get(`${server}/product/${id}`, {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+      }
+    });
+    return response;
+  } catch (error) {
+    console.log("Произошла ошибка при регистрации") 
+ }
+};
+
+export const DeleteProduct = async (id) => {
+  try {
+    const response = await http.delete(`${server}/product/${id}`, {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+      }
+    });
+    return response;
+  } catch (error) {
+    console.log("Произошла ошибка при регистрации") 
+ }
+};
+
+
+
+
+
+
+
 
 
 

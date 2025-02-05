@@ -25,6 +25,12 @@ export default class Product extends Model {
           type: DataTypes.TEXT,
           allowNull: true,
         },
+        isDeleted: {
+          type: DataTypes.BOOLEAN,
+          defaultValue: false, // По умолчанию товар не удален
+          allowNull: true,
+      }
+      
       },
       {
         sequelize,

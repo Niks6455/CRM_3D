@@ -92,7 +92,7 @@ function HistoryModule() {
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Описание</th>
+                                    <th>Комментарий</th>
                                     <th>Телефон</th>
                                     <th>Дата создания</th>
                                     <th>Пользователь</th>
@@ -118,7 +118,7 @@ function HistoryModule() {
                                                     <ul>
                                                         {order.Products.map((product) => (
                                                             <li key={product.id}>
-                                                                {product.name} - {product.OrderProduct.quantity} шт.
+                                                                {product.name} - {product.OrderProduct.quantity} шт. {isAdmin && `(Id: ${product.id})`}
                                                             </li>
                                                         ))}
                                                     </ul>
@@ -157,7 +157,7 @@ function HistoryModule() {
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Описание</th>
+                                    <th>Комментарий</th>
                                     <th>Телефон</th>
                                     <th>Дата создания</th>
                                     <th>Пользователь</th>
@@ -168,7 +168,7 @@ function HistoryModule() {
                             <tbody>
                                 {historyOrders.length === 0 ? (
                                     <tr>
-                                        <td colSpan="7">Нет заказов</td>
+                                        <td colSpan="7">Заказы не найдены</td>
                                     </tr>
                                 ) : (
                                     <>
@@ -183,7 +183,7 @@ function HistoryModule() {
                                                     <ul>
                                                         {order.Products.map((product) => (
                                                             <li key={product.id}>
-                                                                {product.name} - {product.OrderProduct.quantity} шт.
+                                                                {product.name} - {product.OrderProduct.quantity} шт. {isAdmin && `(Id: ${product.id})`}
                                                             </li>
                                                         ))}
                                                     </ul>
