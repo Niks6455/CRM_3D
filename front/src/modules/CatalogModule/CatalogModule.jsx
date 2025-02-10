@@ -4,7 +4,7 @@ import { DeleteProduct, GetAllProduct, GetProductOne, ProdCreate, UpdatePhoto, U
 import Layout from "../../ui/Layout/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct, removeProduct, updateProductQuantity } from "../../store/Basket/basket";
-
+import noPhoto from "./../../assets/img/noPhoto.png";
 
 function CatalogModule() {
     const [ProductData, setProductData] = useState([]);
@@ -165,7 +165,7 @@ function CatalogModule() {
                     const existingProduct = store.find(el => el.productId === item.id);
                     return (
                         <div key={index} className={!isAdmin ? styles.catalogItem : styles.catalogItemAdmin}>
-                        <img src={item.image ? `data:image/png;base64,${item.image}` :  "/img/NoPhoto.png"} alt={item.name} />
+                        <img src={item.image ? `data:image/png;base64,${item.image}` :  {noPhoto}} alt={item.name} />
                         <div className={styles.itemContent}>
                             <h2>{item.name}</h2>
                             <p className={styles.price}>{item.price} ₽</p>
@@ -207,7 +207,7 @@ function CatalogModule() {
                     <div className={styles.catalogItemContainerPodr}>
                         <div className={styles.catalogItemInner}>
                             <div className={styles.catalogItemInnerBlockOne}>
-                            <img src={selectPodr.image ? `data:image/png;base64,${selectPodr.image}` :  "/img/NoPhoto.png"} alt={selectPodr?.name} />
+                            <img src={selectPodr.image ? `data:image/png;base64,${selectPodr.image}` :  {noPhoto}} alt={selectPodr?.name} />
                                 <div className={styles.itemContent}>
                                     <h2>Название товара: {selectPodr?.name}</h2>
                                     <p className={styles.price}>Стоимость товара: {selectPodr?.price} ₽</p>
@@ -267,7 +267,7 @@ function CatalogModule() {
                             <h1> Редактирование модели  </h1>
                             <div className={styles.catalogItemInnerEditBlock}>
                                 <div className={styles.catalogItemInnerEditBlockFirst}>
-                                    <img src={editId?.image ? `data:image/png;base64,${editId?.image}` :  "/img/NoPhoto.png"} alt={editId?.name} />
+                                    <img src={editId?.image ? `data:image/png;base64,${editId?.image}` :  {noPhoto}} alt={editId?.name} />
                                     <button className={styles.addPhotoImg} onClick={() => AddPhoto()}>Изменить фото</button>
                                     <input type="file" ref={fileInputRef} onChange={handleFileChange} accept=".png .jpeg .jpg" />
                                 </div>
